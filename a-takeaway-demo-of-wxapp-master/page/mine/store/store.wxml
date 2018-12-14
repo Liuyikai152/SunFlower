@@ -1,0 +1,18 @@
+<!--page/mine/store/store.wxml-->
+ <block wx:for="{{sx}}" wx:key="item.ID">
+
+    <view class='item'>
+      <text class='aa'>评论内容:</text><text class='right'>{{item.StoreName}}</text>
+    </view>
+
+    <view class='item'>
+      <text class='aa'>评论时间:</text><text class='right'>{{item.StoreImg}}</text>
+    </view>
+
+    <view class='item'>
+     <text class='aa'>图片:</text><text class='right'>{{item.Address}}</text>
+    </view> 
+
+    </block>
+
+

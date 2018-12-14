@@ -1,0 +1,6 @@
+ <block wx:for="{{sx}}" >
+      <view>
+        <text>{{item.UserPhone}}</text>
+      </view>
+    </block>
+ 

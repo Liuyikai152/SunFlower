@@ -1,0 +1,32 @@
+
+
+<view class="container">
+  <view class="personal_info">
+    <view class="photo_wrap">
+      <image src="{{userInfo.avatarUrl}}" class="photo"></image>
+    </view>
+    <view class="personal_info">
+      <view class="nickname">
+        <input name="username" value="{{userInfo.nickName}}"></input>
+      </view>
+    </view>
+  </view>
+
+  <view class="user_addr_manage">
+
+    <navigator url="/page/order/order" class="weui-cell" hover-class="weui-cell_active">
+    </navigator>
+    <view class="user_addr_title">【地址管理】</view>
+    <block wx:for="{{tempValues}}" wx:key="item.Id">
+      <view class="user_addr_item">
+        <text class="section_book" wx:if="{{item.CState==true}}"></text>
+        <text wx:else></text>
+        <text class="addr_sub">{{item.Consignee}} {{item.LinkPhone}}</text>
+        <text class="addr_address">{{item.Province}} {{item.CAddress}}</text>
+        <text class='addr-dele' bindtap="deleteaddress" data-aid="{{item.Id}}">×</text>
+        <view class="addr_edit" bindtap="editAddr" data-addrid="{{index+1}}"></view>
+      </view>
+    </block>
+    <navigator url="../edit_addr/edit_addr">新增地址 +</navigator>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="container">
+  <block wx:for="{{res_data}}" wx:key="id" >
+	<view class="header {{scrollDown?'hidden':''}}">
+		<image class="logo" src="{{item.StoreImg}}"/>
+		<view class="name ellipsis">{{item.StoreName}}</view>
+		<view class="welcome ellipsis">公告：欢迎光临{{shop.name}}！</view>
+
+		<view class="follow" bindtap='AddShou'  bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
+
+		<view class="line"></view>
+		<view class="desc">{{shop.desc}}</view>
+	</view>
+  </block>
+<form bindsubmit="addshops">
+	<view class="content-container">
+  
+		<scroll-view class="classify-container" scroll-y="true">
+			<view class="classify {{classifySeleted==classify.id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
+				<view class="name"  >{{classify.classifyName}}</view>
+			</view>
+		</scroll-view>
+
+		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
+			<block wx:for="{{data_data}}" wx:key="id" >
+      <view  wx:for-item="classify" wx:key="id" id="{{classify.id}}">
+	
+				<view class="goods"  wx:for-item="id" wx:key="*this">
+				
+        	<image name="delivery_FileName" value="{{delivery_FileName}}" class="pic" src="{{item.FileName}}"></image>
+					<view  name="delivery_FoodName" value="{{delivery_FoodName}}" class="name ellipsis">{{item.FoodName}}</view>
+					<view  name="delivery_Sale" value="{{delivery_Sale}}" class="sold">销量{{item.Sale}}</view>
+					<view  name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.FoodSprice}}</view>
+
+					<button class="addCart"  name="delivery_id" id="{{item.ID}}"   bindtap="addshop" formType="submit" >
+					  <image src="/imgs/shop/plus.png"></image>
+				  </button>
+				</view>
+			</view>
+        </block>
+		</scroll-view>
+
+    
+	</view>
+  </form>
+
+</view>

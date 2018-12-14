@@ -1,0 +1,7 @@
+<!--page/mine/collect/collect.wxml-->
+<block wx:for="{{res_data}}"  >
+  <view>
+		<image class='storeImg' bindtap="tapBanner" src="{{item.StoreImg}}"/>
+    {{item.Conntent}}
+  </view>
+</block>

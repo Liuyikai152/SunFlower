@@ -1,0 +1,94 @@
+<view class="container">
+
+	<view class="header {{scrollDown?'scrolled':''}}">
+		
+    <view class="location ellipsis" bindtap="toNearby">
+		  	<navigator url="/dutu/dutu">
+    	<image class="icon" src="/imgs/index/icon_location.png"/>
+      {{currentCity}} 
+      <!-- {{location.renderReverse.result.location.addressComponent.district}} -->
+         <!-- <view wx:if="{{location}}!=null" ></view> -->
+       </navigator>
+		</view>
+   
+		<view class="search" bindtap="tapSearch">
+			<image class="icon" src="/imgs/index/icon_search.png"/>
+			<i class="fa fa-home"></i>
+			大龙虾
+		</view>
+	</view>
+
+	<scroll-view scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscroll="onScroll">
+	<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{shops}}" wx:key="id">
+    		<navigator url="/page/shop/shop?id={{item.ID}}">
+				
+      <swiper-item>
+        <image src="{{item.StoreImg}}" class="slide-image" />
+      </swiper-item>
+				</navigator>
+    </block>
+  </swiper>
+
+
+		<!-- <swiper class="section icons" indicator-dots="true" autoplay="" interval="" duration="500">
+			<swiper-item wx:for="{{icons}}" wx:for-item="list" wx:key="id">
+      	<navigator url="{{item.url}}">
+				<view class="icon" wx:for="{{list}}" wx:for-item="icon" wx:key="id" bindtap="toNearby">
+			
+        	<image src="{{icon.img}}"/>
+          
+					<text>{{icon.name}}</text>
+          
+				</view>	</navigator>
+			</swiper-item>
+		</swiper> -->
+
+		<!-- <view class="section section-big discount">
+			<view class="title">优惠专区</view>
+			<image class="content" bindtap="toNearby" src="/imgs/index/2.jpg"/>
+		</view>
+
+		<view class="section section-big preferred">
+			<view class="title">为你优选</view>
+			<image class="content" bindtap="toNearby" src="/imgs/index/3.jpg"/>
+		</view>
+
+		<view class="section section-big special">
+			<view class="title">特色频道</view>
+			<image class="content" bindtap="toNearby" src="/imgs/index/4.jpg"/>
+		</view> -->
+
+		<view class="nearby" class="section section-big nearby">
+			<view class="title">附近商家</view>
+			<view class="filters">
+				<view class="filter {{filterId==1?'active':''}}" data-id="1" bindtap="tapFilter">综合排序<text class="v">↓</text>
+				 </view>
+				<view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">销量最高<text class="v">↓</text>
+				</view>
+				<!-- <view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">距离最近<text class="v">↓</text>
+				</view> -->
+			</view>
+    
+  <view wx:if="{{filterId==1}}" >
+			<view class="shop" wx:for="{{shops}}" wx:key="ID">
+				<navigator url="/page/shop/shop?id={{item.ID}}">
+					<image src="{{item.StoreImg}}"  />
+          <text class='store'>{{item.StoreName}} \n {{item.Conntent}}</text>
+				</navigator>
+			</view>
+</view>
+  <view wx:else >
+  <!-- <view catchtap='GetStoresSales'> -->
+      <view class="shop"  wx:for="{{stores}}" wx:key="ID"  >
+      <navigator url="/page/shop/shop?id={{item.ID}}">
+					<image src="{{item.StoreImg}}"  />
+          <text class='store'>{{item.StoreName}} \n {{item.Conntent}}</text>
+				</navigator>
+      </view>
+      </view>
+      <!-- </view> -->
+		</view>
+
+	</scroll-view>
+</view>

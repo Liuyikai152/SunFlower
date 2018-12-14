@@ -1,0 +1,5 @@
+
+.weui-cell__bdd{
+
+   display: none;
+}

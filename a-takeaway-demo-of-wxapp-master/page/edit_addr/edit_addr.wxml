@@ -1,0 +1,82 @@
+<view class="container">
+  <form bindsubmit=" ">
+    <view class="header"></view>
+
+      <view class="weui-cells weui-cells_after-title margin-top">
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">收货人:</view>
+            </view>
+          <view class="weui-cell__bd">
+           <input name="delivery_name" class="weui-input" placeholder="请输入收货人" value="{{delivery_name}}" />
+          </view>
+           </view>
+
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">性别:</view>
+          </view>
+        <view class="weui-cell__bd" >
+          <radio-group bindchange="radioChange"  name="delivery_UserGender">
+             <radio value='3'>先生</radio>
+             <radio value='4'>女士</radio>
+          </radio-group>
+        </view>
+      </view>
+
+
+
+      <view class="weui-cell weui-cell_input">
+         <view class="weui-cell__hd">
+           <view class="weui-label">收货地址:</view>
+         </view>
+        <view class="weui-cell__bd">
+          <input placeholder="选择" name="delivery_address" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />
+        </view>
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea name="delivery_street" class="weui-textarea" placeholder="请输入详细地址" style="height: 3.3em" value="{{delivery_street}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title  margin-top">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">设为默认地址</view>
+          <view class="weui-cell__ft">
+            <switch name="delivery_is_default" color="{{color}}" checked="{{delivery_is_default}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="footer">
+      <button class="footer-add" formType="submit">保存</button>
+    </view>
+
+
+<view wx:if="{{condition}}" class="citypicker">
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+    <view class="cityheader">
+      <view bindtap="open" class="city-cancel">取消</view>
+      <view bindtap="open" class="city-true">确定</view>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+  </form>
+</view>

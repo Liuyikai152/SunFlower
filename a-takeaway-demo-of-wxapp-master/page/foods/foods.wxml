@@ -1,0 +1,65 @@
+<view class="container">
+  <form bindsubmit="handleSubmit">
+    <view class="header"></view>
+
+      <view class="weui-cells weui-cells_after-title margin-top">
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商家店铺编号:</view>
+            </view>
+          <view class="weui-cell__bd">
+           <input name="delivery_Number" class="weui-input" placeholder="请输入商家编号" value="{{delivery_Number}}" />
+          </view>
+           </view>
+
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">商家店铺名称:</view>
+          </view>
+         <view class="weui-cell__bd">
+           <input name="delivery_Name" class="weui-input" placeholder="请输入商家名称" value="{{delivery_Name}}" />
+          </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">商家店铺位置:</view>
+          </view>
+         <view class="weui-cell__bd">
+           <input name="delivery_loction" class="weui-input" placeholder="请输入商家店铺位置" value="{{delivery_loction}}" />
+          </view>      </view>
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">商家店铺描述:</view>
+          </view>
+         <view class="weui-cell__bd">
+           <input name="delivery_Title" class="weui-input" placeholder="请输入商家店铺描述" value="{{delivery_Title}}" />
+          </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">商家店铺电话:</view>
+          </view>
+         <view class="weui-cell__bd">
+           <input name="delivery_phone" class="weui-input" placeholder="请输入商家店铺电话" value="{{delivery_phone}}" />
+          </view>
+          <view class="weui-cell__bdd">
+           <input name="Createtime" class="weui-input" placeholder="{{time}}" value="{{time}}" />
+          </view>
+
+          <view class="weui-cell__bdd">
+           <input name="Endtime" class="weui-input" placeholder="{{time}}" value="{{time}}" />
+          </view>
+      </view>
+     
+   
+    </view>
+    
+    <view class="footer">
+      <button class="footer-add"  formType="submit">保存</button>
+    </view>
+    
+  </form>
+</view>

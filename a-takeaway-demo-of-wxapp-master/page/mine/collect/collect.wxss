@@ -1,0 +1,8 @@
+/* page/mine/collect/collect.wxss */
+
+.storeImg  {
+  width: 230px;
+	height: 100px;
+  float: left
+}
+
