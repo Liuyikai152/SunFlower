@@ -21,7 +21,7 @@ Page({
 
 store:function(){
   wx.navigateTo({
-    url: '/page/mine/store/store',
+    url: '/page/foods/foods',
   })
   
 },
