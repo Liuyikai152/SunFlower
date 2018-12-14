@@ -10,7 +10,7 @@ Page({
       url: 'http://localhost:24380/Store/GetStore?id=' + shopId,
       method: 'GET',
       success: function (res) {
-        console.log(res.data)
+       
         that.setData({
           res_data: res.data
         })
@@ -31,6 +31,8 @@ Page({
 
   data: {
     
+    
+
     goodsList: [
       {
         id: 'hot',
@@ -61,19 +63,50 @@ Page({
 
   },
 
-  AddShou:function(even){
-   
+  AddShous: function (event) {
+
+    var id = event.currentTarget.id;
+
     wx.request({
-      url: 'http://localhost:24380/Store/GetStore?id=' + shopId,
+      url: 'http://localhost:24380/Store/GetStore?id=' + id,
       method: 'GET',
       success: function (res) {
-        console.log(res.data)
-        that.setData({
-          res_data: res.data
+       
+         var storenumber=res.data[0].StoreNumber;
+        var createtime = util.formatTime(new Date());
+        console.log(storenumber)
+        wx.request({
+          url: 'http://localhost:24380/api/users/GetUsers',
+          method: 'GET',
+          success: function (resaa) {
+             var UserID = resaa.data[0].ID;
+            console.log(UserID)
+
+            //添加购物车
+            wx.request({
+              url: 'http://localhost:24380/api/Collect/AddCollect',
+              method: 'POST',
+              data: {
+                
+                storenumber:storenumber,
+                userid: UserID,
+                createtime:createtime
+              },
+              success: function () {
+                wx.showToast({
+                  title: '加入收藏成功!',
+                })
+              }
+            })
+            }
         })
+        
       }
     })
   },
+
+
+
   onShow: function () {
     this.setData({
       classifySeleted: this.data.goodsList[0].id
@@ -118,7 +151,6 @@ Page({
       followed: !this.data.followed
     });
   },
-
   onGoodsScroll: function (e) {
     if (e.detail.scrollTop > 10 && !this.data.scrollDown) {
       this.setData({
@@ -171,7 +203,6 @@ Page({
         var storenumber = resdate.data[0].StoreNumber;
         var Price = resdate.data[0].FoodSprice;
 
-
         wx.request({
           url: 'http://localhost:24380/api/users/GetUsers',
           method: 'GET',
@@ -187,7 +218,6 @@ Page({
               url: 'http://localhost:24380/api/Trolley/AddTrolley',
               method: 'POST',
               data: {
-
                 trolleynumber: "G" + random,
                 userid: UserID,
                 storenumber: storenumber,

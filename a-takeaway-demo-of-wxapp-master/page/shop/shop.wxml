@@ -5,8 +5,11 @@
 		<view class="name ellipsis">{{item.StoreName}}</view>
 		<view class="welcome ellipsis">公告：欢迎光临{{shop.name}}！</view>
 
-		<view class="follow" bindtap='AddShou' id="{{item.ID}}" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
-<view></view>
+		<!-- <view class="follow" bindtap='AddShou' id="{{item.ID}}" bindtap="follow">{{followed?'已收藏':'收藏'}}</view> -->
+	<button class="addCarts"  name="delivery_id" id="{{item.ID}}"   bindtap="AddShous" formType="submit" >
+					  加入收藏
+				  </button>
+
 		<view class="line"></view>
 		<view class="desc">{{shop.desc}}</view>
 	</view>
