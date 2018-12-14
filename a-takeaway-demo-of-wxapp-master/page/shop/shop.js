@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js'); 
 
 Page({
 
@@ -28,6 +29,7 @@ Page({
   },
 
   data: {
+    
     goodsList: [
       {
         id: 'hot',
@@ -58,6 +60,19 @@ Page({
 
   },
 
+  AddShou:function(even){
+   
+    wx.request({
+      url: 'http://localhost:24380/Store/GetStore?id=' + shopId,
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          res_data: res.data
+        })
+      }
+    })
+  },
   onShow: function () {
     this.setData({
       classifySeleted: this.data.goodsList[0].id
@@ -102,6 +117,7 @@ Page({
       followed: !this.data.followed
     });
   },
+
   onGoodsScroll: function (e) {
     if (e.detail.scrollTop > 10 && !this.data.scrollDown) {
       this.setData({
@@ -141,54 +157,58 @@ Page({
       });
     }, 100);
   },
+  
   addshop: function (event) {
-    // var delivery_FileName = event.detail.value.delivery_FileName;
-    // var delivery_FoodName = event.detail.value.delivery_FoodName;
-    // var delivery_Sale = event.detail.value.delivery_Sale;
-    // var delivery_FoodSprice = event.detail.value.delivery_FoodSprice;
- 
-    var delivery_id = event.currentTarget.id ;
-    
+    var Foodid = event.currentTarget.id;
+    var random = Math.random().toString(36).substr(2, 15);
+
     wx.request({
-      url: 'http://localhost:24380/Food/GetFoodByID?id=' + delivery_id,
+      url: 'http://localhost:24380/Food/GetFoodByID?id=' + Foodid,
       method: 'GET',
-      success: function (res) {
-        console.log(res.data);
-       
-      }
-    })
-    return;
-  },
-  addshops: function (event) {
-    // var delivery_FileName = event.detail.value.delivery_FileName;
-    // var delivery_FoodName = event.detail.value.delivery_FoodName;
-    // var delivery_Sale = event.detail.value.delivery_Sale;
-    // var delivery_FoodSprice = event.detail.value.delivery_FoodSprice;
-    var delivery_id = event.detail.value.delivery_id;
-    console.log(delivery_id);
-    // console.log(delivery_FileName);
-    // console.log(delivery_FoodName);
-    // console.log(delivery_Sale);
-    // console.log(delivery_FoodSprice);
-   
-    return;
-    //添加收货人地址
-    wx.request({
-      url: 'http://localhost:24380/api/Trolley/AddTrolley',
-      method: 'POST',
-      data: {
-        FileName:delivery_FileName,
-        FoodName: delivery_FoodName,
-        Sale: delivery_Sale,
-        FoodSprice: delivery_FoodSprice,
-      },
-      success: function () {
-        wx.showToast({
-          title: '保存成功!',
+      success: function (resdate) {
+        var FoodNumber = resdate.data[0].FoodNumber;
+        var storenumber = resdate.data[0].StoreNumber;
+        var Price = resdate.data[0].FoodSprice;
+
+
+        wx.request({
+          url: 'http://localhost:24380/api/users/GetUsers',
+          method: 'GET',
+          success: function (resaa) {
+
+            var UserID = resaa.data[0].ID;
+            var AddressID = resaa.data[0].UserAddressID;
+            var userphone = resaa.data[0].UserPhone;
+            var time = util.formatTime(new Date());
+
+            //添加购物车
+            wx.request({
+              url: 'http://localhost:24380/api/Trolley/AddTrolley',
+              method: 'POST',
+              data: {
+
+                trolleynumber: "G" + random,
+                userid: UserID,
+                storenumber: storenumber,
+                foodnumber: FoodNumber,
+                createtime: time,
+                money: Price,
+                userphone: userphone,
+                addressid: AddressID
+              },
+              success: function () {
+                wx.showToast({
+                  title: '添加购物车成功!',
+                })
+              }
+            })
+          }
         })
       }
     })
 
-  }
+
+
+  },
 });
 

@@ -5,8 +5,8 @@
 		<view class="name ellipsis">{{item.StoreName}}</view>
 		<view class="welcome ellipsis">公告：欢迎光临{{shop.name}}！</view>
 
-		<view class="follow" bindtap='AddShou'  bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
-
+		<view class="follow" bindtap='AddShou' id="{{item.ID}}" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
+<view></view>
 		<view class="line"></view>
 		<view class="desc">{{shop.desc}}</view>
 	</view>
