@@ -30,7 +30,7 @@ Page({
 
   data: {
     
-    
+    collect:"加入收藏",
 
     goodsList: [
       {
@@ -63,45 +63,51 @@ Page({
   },
 
   AddShous: function (event) {
-
     var id = event.currentTarget.id;
-
-    wx.request({
-      url: 'http://localhost:24380/Store/GetStore?id=' + id,
-      method: 'GET',
-      success: function (res) {
-       
-         var storenumber=res.data[0].StoreNumber;
-        var createtime = util.formatTime(new Date());
-        console.log(storenumber)
+  console.log(event.currentTarget.followed)
+   
+      
         wx.request({
-          url: 'http://localhost:24380/api/users/GetUsers',
+          url: 'http://localhost:24380/Store/GetStore?id=' + id,
           method: 'GET',
-          success: function (resaa) {
-             var UserID = resaa.data[0].ID;
-            console.log(UserID)
+          success: function (res) {
 
-            //添加购物车
+            var storenumber = res.data[0].StoreNumber;
+            var createtime = util.formatTime(new Date());
+            console.log(storenumber)
             wx.request({
-              url: 'http://localhost:24380/api/Collect/AddCollect',
-              method: 'POST',
-              data: {
-                
-                storenumber:storenumber,
-                userid: UserID,
-                createtime:createtime
-              },
-              success: function () {
-                wx.showToast({
-                  title: '加入收藏成功!',
+              url: 'http://localhost:24380/api/users/GetUsers',
+              method: 'GET',
+              success: function (resaa) {
+                var UserID = resaa.data[0].ID;
+                console.log(UserID)
+
+                //添加购物车
+                wx.request({
+                  url: 'http://localhost:24380/api/Collect/AddCollect',
+                  method: 'POST',
+                  data: {
+
+                    storenumber: storenumber,
+                    userid: UserID,
+                    createtime: createtime
+                  },
+                  success: function () {
+                    wx.showToast({
+                      title: '加入收藏成功!',
+                    })
+                  }
                 })
               }
             })
-            }
+
+          }
         })
-        
-      }
-    })
+      
+     
+      
+   
+   
   },
 
 

@@ -68,7 +68,7 @@ scroll-view {
 	height: 330rpx;
 }
 .banner image {
-	width: 100%;
+	width: 85%;
 	height: 100%;
 }
 
