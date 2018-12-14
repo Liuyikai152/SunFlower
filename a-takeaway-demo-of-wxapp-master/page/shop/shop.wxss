@@ -7,6 +7,8 @@ page {
 	overflow: hidden;
 }
 
+
+
 .header {
 	position: relative;
 	background: #feb70f;
@@ -138,6 +140,20 @@ page {
 	background: #feb70f;
 	border-radius: 50%;
 }
+
+.header  .addCarts{
+	position: absolute;
+	right: 30rpx;
+	bottom: 40rpx;
+	width: 204rpx;
+	height: 64rpx;
+  font-size:24rpx;
+  color: white;
+	background:black;
+	border-radius: 50%;
+
+}
+
 .goods-container .goods .addCart image {
 	pointer-events: none;
 	position: absolute;
