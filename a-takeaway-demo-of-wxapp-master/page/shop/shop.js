@@ -5,6 +5,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var shopId = options.id;
+    
     wx.request({
       url: 'http://localhost:24380/Store/GetStore?id=' + shopId,
       method: 'GET',
