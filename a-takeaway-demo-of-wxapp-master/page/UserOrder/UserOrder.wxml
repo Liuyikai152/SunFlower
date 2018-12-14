@@ -1,0 +1,12 @@
+
+<block  wx:for="{{res_data}}" wx:key="id" >
+   <view  wx:for-item="classify" wx:key="id" id="{{classify.id}}" >
+				<view class="goods"  wx:for-item="id" wx:key="*this">
+        	<image class="pic" src="{{item.FileName}}"></image>
+					<view value="{{delivery_FoodName}}" class="name ellipsis">{{item.FoodName}}</view>
+					<view class="sold">{{item.Num}}</view>
+					<view class="price">{{item.Prices}}</view>
+          <view class="price">{{item.money}}</view>
+				</view>
+	 </view>
+</block>
