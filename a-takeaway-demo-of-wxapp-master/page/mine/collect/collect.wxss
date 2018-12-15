@@ -5,4 +5,9 @@
 	height: 100px;
   float: left
 }
+.Conntent{
 
+  display: flex;
+ 
+
+}

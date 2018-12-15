@@ -1,6 +1,6 @@
 <!--page/mine/collect/collect.wxml-->
 <block wx:for="{{res_data}}" wx:key="id" >
-  <view>
+  <view class="Conntent">
    <navigator url="/page/shop/shop?id={{item.ID}}" >
 		<image class='storeImg' bindtap="tapBanner" src="{{item.StoreImg}}"/>
     {{item.Conntent}}
