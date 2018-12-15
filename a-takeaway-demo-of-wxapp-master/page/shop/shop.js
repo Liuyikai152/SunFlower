@@ -65,8 +65,8 @@ Page({
 
   AddShous: function (event) {
     var id = event.currentTarget.id;
-  console.log(event.currentTarget.followed)
-   
+ 
+   return;
       
         wx.request({
           url: 'http://localhost:24380/Store/GetStore?id=' + id,
@@ -75,7 +75,7 @@ Page({
 
             var storenumber = res.data[0].StoreNumber;
             var createtime = util.formatTime(new Date());
-            console.log(storenumber)
+        
             wx.request({
               url: 'http://localhost:24380/api/users/GetUsers',
               method: 'GET',
@@ -94,6 +94,7 @@ Page({
                     createtime: createtime
                   },
                   success: function () {
+                    
                     wx.showToast({
                       title: '加入收藏成功!',
                     })

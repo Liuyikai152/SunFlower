@@ -4,7 +4,7 @@ var server = require('../../utils/server');
 Page({
 	data: {	
     filterId: 1,
-		address: '海淀区',
+	
     // imgUrls: [
     //   '/imgs/菜品图片/扇贝.jpg',
     //   '/imgs/菜品图片/加州牛肉面.jpg',

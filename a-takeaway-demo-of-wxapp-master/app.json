@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "page/index/index",
     "page/shop/shop",
     "page/order/order",
@@ -12,10 +11,9 @@
     "page/mine/collect/collect",
     "page/mine/store/store",
     "page/mine/details/details",
-    "page/index/search/search",
+   "page/index/search/search",
     "page/foods/foods",
-    "dutu/dutu"
-   
+    "dutu/dutu"  
   ],
 
   "window": {

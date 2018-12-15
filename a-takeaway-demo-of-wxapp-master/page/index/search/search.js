@@ -2,58 +2,17 @@ var app = getApp();
 var server = require('../../../utils/server');
 Page({
   data: {
-    filterId: 1,
+   
     searchWords: '',
     placeholder: '大龙虾',
     shops: app.globalData.shops
   },
 
   onLoad:function(options){
+   
     var self=this;
-    wx.getStorage({
-      key: 'token',
-      success: function (res) {
-        wx.request({
-
-          url: 'http://localhost:24380/Store/GetStores',
-          method: 'GET',
-          header: {
-            'content-type': 'application/json',
-            'Authorization': 'BasicAuth ' + res.data
-          },
-          success: function (res) {
-
-            self.setData({
-              shops: res.data,
-              // list: that.data.navSectionItems
-            })
-          }
-        })
-      },
-    });
-
-    wx.getStorage({
-      key: 'token',
-      success: function (res) {
-        wx.request({
-
-          url: 'http://localhost:24380/Store/GetStoresSales',
-          method: 'GET',
-          header: {
-            'content-type': 'application/json',
-            'Authorization': 'BasicAuth ' + res.data
-          },
-          success: function (res) {
-
-            self.setData({
-              stores: res.data,
-              // list: that.data.navSectionItems
-            })
-          }
-        })
-      },
-    });
-
+  
+ 
   },
 
     onShow: function () {
@@ -66,10 +25,32 @@ Page({
         searchWords: e.detail.value
       });
     },
-    doSearch: function() {
-      this.setData({
-        showResult: true
+    doSearch: function(even) {
+     var self= this;
+     var search = even.currentTarget.id;
+    
+      wx.getStorage({
+        key: 'token',
+        success: function (res) {
+          wx.request({
+
+            url: 'http://localhost:24380/Store/GetStoreByName?Name='+search,
+            method: 'GET',         
+            header: {
+              'content-type': 'application/json',
+              'Authorization': 'BasicAuth ' + res.data
+            },
+            success: function (res) {
+
+              self.setData({
+                shops: res.data,
+                // list: that.data.navSectionItems
+              })
+            }
+          })
+        },
       });
+
     },
 
 
