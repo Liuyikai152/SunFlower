@@ -81,7 +81,7 @@ Page({
               method: 'GET',
               success: function (resaa) {
                 var UserID = resaa.data[0].ID;
-                console.log(UserID)
+         
 
                 //添加购物车
                 wx.request({

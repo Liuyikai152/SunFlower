@@ -144,7 +144,7 @@ page {
 .header  .addCarts{
 	position: absolute;
 	right: 30rpx;
-	bottom: 40rpx;
+	bottom: 45rpx;
 	width: 204rpx;
 	height: 64rpx;
   font-size:24rpx;
