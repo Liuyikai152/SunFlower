@@ -1,0 +1,9 @@
+<block  wx:for="{{res_data}}" wx:key="id" >
+ 
+  <text class='FoodName'>{{item.FoodName}}</text>
+  <image class="img" src="{{item.FileName}}"></image>
+
+	<view class="price">单价:￥{{item.FoodSprice}}</view>
+<view class="price">描述:{{item.FoodSummary}}</view>
+
+</block>
