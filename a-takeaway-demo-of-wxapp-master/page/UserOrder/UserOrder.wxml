@@ -1,14 +1,38 @@
-
-
 <block  wx:for="{{res_data}}" wx:key="id" >
-   <view  wx:for-item="classify" wx:key="id" id="{{classify.id}}" >
-				<view class="goods"  wx:for-item="id" wx:key="*this">
-        	<image class="pic" src="{{item.FileName}}"></image>
-					<view value="{{delivery_FoodName}}" class="name ellipsis">菜品名称:{{item.FoodName}}</view>
-					<view class="sold">数量:{{item.Num}}</view>
-					<view class="price">单价:￥{{item.Prices}}</view>
-          <view class="price">总价:￥{{item.Money}}</view>
-          <view class="price">支付状态:{{item.OrderState==10?'已支付':'待支付'}}</view>
-				</view>
-	 </view>
+ <navigator url="/page/shop/shop?id=4" >
+  <text class='FoodName'>{{item.FoodName}}</text>
+  <image class="img" src="{{item.FileName}}"></image>
+	<view class="sold">数量:{{item.Num}}</view>
+	<view class="price">单价:￥{{item.Prices}}</view>
+  <view class="price">总价:￥{{item.Money}}</view>
+  <view class="price">支付状态:{{item.OrderState==10?'已支付':'待支付'}}</view>
+ </navigator>
+
+
+ <form bindsubmit="handleSubmit">
+     <input class="Comments" name="delivery_StoreNumber" value="{{item.StoreNumber}}" ></input>
+      <view class="weui-cells weui-cells_after-title margin-top">
+
+        <view class="weui-cell weui-cell_input">
+
+          <view class="weui-cell__hd">
+            <view class="weui-label">  发表评论:</view>
+          </view>
+        
+          <view class="weui-cell__bd">
+           <textarea name="delivery_content" value="{{delivery_content}}" placeholder="评论内容" class="content" ></textarea>
+          </view>
+
+        </view>
+         
+    </view>
+    
+    <view class="footer">
+      <button class="footer-add"  formType="submit">发表</button>
+    </view>
+    
+  </form>
+
+
+
 </block>

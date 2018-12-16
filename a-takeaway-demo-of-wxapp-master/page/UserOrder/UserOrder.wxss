@@ -1,1 +1,21 @@
 /* page/UserOrder/UserOrder.wxss */
+
+page {
+	height: 100%;
+	overflow: hidden;
+}
+.img {
+
+height: 170px;
+}
+.pinlun{
+  color: blueviolet;
+}
+
+.content{
+  height: 50px;
+}
+.Comments{
+
+  display: none;
+}

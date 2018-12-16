@@ -1,33 +1,61 @@
 // page/UserOrder/UserOrder.js
+
+var app = getApp()
+const util = require('../../utils/util.js');
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     var that = this;
     var orderid = options.id;
-
     wx.request({
       url: 'http://localhost:24380/Order/GetOrder?id=' + orderid,
       method: 'GET',
       success: function (res) {
-        console.log(res.data)
         that.setData({
           res_data: res.data
         })
       }
     })
   },
- 
+
+
+
+  handleSubmit: function (event) {
+    var delivery_content = event.detail.value.delivery_content;
+    var StoreNumber = event.detail.value.delivery_StoreNumber;
+
+    wx.request({
+      url: 'http://localhost:24380/api/users/GetUsers',
+      method: 'GET',
+      success: function (resaa) {
+        var UserID = resaa.data[0].ID;
+
+
+        wx.request({
+          url: 'http://localhost:24380/api/Comment/AddComment',
+          method: 'POST',
+          data: {
+            Content: delivery_content,
+            storenumber: StoreNumber,
+            UserID: UserID,
+            CommentTime: util.formatTime(new Date())
+          },
+          success: function () {
+            wx.showToast({
+              title: '添加成功!'
+            })
+          },
+        })
+      }
+    })
+
+
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
