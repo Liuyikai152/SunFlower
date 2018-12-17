@@ -225,7 +225,7 @@ Page({
               url: 'http://localhost:24380/Trolley/AddTrolley',
               method: 'POST',
               data: {
-                trolleynumber: "G001",// + random,
+                trolleynumber: "GWC" + FoodNumber,
                 userid: UserID,
                 storenumber: storenumber,
                 foodnumber: FoodNumber,
