@@ -83,7 +83,7 @@ Page({
                 var UserID = resaa.data[0].ID;
          
 
-                //添加购物车
+                //添加收藏
                 wx.request({
                   url: 'http://localhost:24380/api/Collect/AddCollect',
                   method: 'POST',
@@ -222,10 +222,10 @@ Page({
 
             //添加购物车
             wx.request({
-              url: 'http://localhost:24380/api/Trolley/AddTrolley',
+              url: 'http://localhost:24380/Trolley/AddTrolley',
               method: 'POST',
               data: {
-                trolleynumber: "G" + random,
+                trolleynumber: "G001",// + random,
                 userid: UserID,
                 storenumber: storenumber,
                 foodnumber: FoodNumber,
