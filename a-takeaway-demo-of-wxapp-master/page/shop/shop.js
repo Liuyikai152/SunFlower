@@ -1,16 +1,18 @@
-var util = require('../../utils/util.js'); 
+var util = require('../../utils/util.js');
+
+
 
 Page({
 
   onLoad: function (options) {
     var that = this;
     var shopId = options.id;
-    
+
     wx.request({
       url: 'http://localhost:24380/Store/GetStore?id=' + shopId,
       method: 'GET',
       success: function (res) {
-       
+
         that.setData({
           res_data: res.data
         })
@@ -30,8 +32,8 @@ Page({
   },
 
   data: {
-    
-    collect:"加入收藏",
+
+    collect1: "已收藏",
 
     goodsList: [
       {
@@ -65,51 +67,68 @@ Page({
 
   AddShous: function (event) {
     var id = event.currentTarget.id;
- 
-   return;
-      
+
+
+    wx.request({
+      url: 'http://localhost:24380/Store/GetStore?id=' + id,
+      method: 'GET',
+      success: function (res) {
+
+        var storenumber = res.data[0].StoreNumber;
+        var createtime = util.formatTime(new Date());
+
         wx.request({
-          url: 'http://localhost:24380/Store/GetStore?id=' + id,
+          url: 'http://localhost:24380/api/users/GetUsers',
           method: 'GET',
-          success: function (res) {
+          success: function (resaa) {
+            var UserID = resaa.data[0].ID;
 
-            var storenumber = res.data[0].StoreNumber;
-            var createtime = util.formatTime(new Date());
-        
+
             wx.request({
-              url: 'http://localhost:24380/api/users/GetUsers',
+              url: 'http://localhost:24380/Collect/GetCollectByID?storenumber=' + storenumber,
               method: 'GET',
-              success: function (resaa) {
-                var UserID = resaa.data[0].ID;
-         
+              success: function (reshha) {
+                console.log(reshha.data.length)
+                if (reshha.data.length == 0) {
+                  //添加收藏
+                  wx.request({
+                    url: 'http://localhost:24380/Collect/AddCollect',
+                    method: 'POST',
+                    data: {
+                      storenumber: storenumber,
+                      userid: UserID,
+                      createtime: createtime
+                    },
+                    success: function () {
+                      wx.showToast({
+                        title: '加入收藏成功!',
 
-                //添加收藏
-                wx.request({
-                  url: 'http://localhost:24380/api/Collect/AddCollect',
-                  method: 'POST',
-                  data: {
+                      })
+                    }
+                  })
+                }
+                else {
+                  wx.showToast({
+                    title: '已经收藏!',
 
-                    storenumber: storenumber,
-                    userid: UserID,
-                    createtime: createtime
-                  },
-                  success: function () {
-                    
-                    wx.showToast({
-                      title: '加入收藏成功!',
-                    })
-                  }
-                })
+                  })
+                }
               }
             })
 
+
+
+
           }
         })
-      
-     
-      
-   
-   
+
+      }
+    })
+
+
+
+
+
   },
 
 
@@ -197,8 +216,9 @@ Page({
       });
     }, 100);
   },
-  
+
   addshop: function (event) {
+
     var Foodid = event.currentTarget.id;
     var random = Math.random().toString(36).substr(2, 15);
 
@@ -225,7 +245,7 @@ Page({
               url: 'http://localhost:24380/Trolley/AddTrolley',
               method: 'POST',
               data: {
-                trolleynumber: "GWC" + FoodNumber,
+                trolleynumber: "G" + random,
                 userid: UserID,
                 storenumber: storenumber,
                 foodnumber: FoodNumber,

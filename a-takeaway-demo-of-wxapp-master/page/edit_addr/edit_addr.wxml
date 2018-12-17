@@ -1,5 +1,5 @@
 <view class="container">
-  <form bindsubmit=" ">
+  <form bindsubmit="handleSubmit">
     <view class="header"></view>
 
       <view class="weui-cells weui-cells_after-title margin-top">

@@ -1,9 +1,15 @@
 <block  wx:for="{{res_data}}" wx:key="id" >
- 
-  <text class='FoodName'>{{item.FoodName}}</text>
-  <image class="img" src="{{item.FileName}}"></image>
 
-	<view class="price">单价:￥{{item.FoodSprice}}</view>
-<view class="price">描述:{{item.FoodSummary}}</view>
+  <text  name="delivery_FoodName" value="{{delivery_FoodName}}"  class='FoodName'>{{item.FoodName}}</text>
+  <image name="delivery_FileName" value="{{delivery_FileName}}" class="img" src="{{item.FileName}}"></image>
+	<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">单价:￥{{item.FoodSprice}}</view>
+  <view class="price">描述:{{item.FoodSummary}}</view>
+  
+
+
+  <button class="addCart"  name="delivery_id" id="{{item.ID}}"   bindtap="addshop" formType="submit" >
+		添加购物车
+	</button>
+  
 
 </block>

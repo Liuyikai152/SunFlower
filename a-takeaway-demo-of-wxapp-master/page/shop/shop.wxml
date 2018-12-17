@@ -7,9 +7,8 @@
 
 		<!-- <view class="follow" bindtap='AddShou' id="{{item.ID}}" bindtap="follow">{{followed?'已收藏':'收藏'}}</view> -->
 	<button class="addCarts"  name="delivery_id" id="{{item.ID}}"   bindtap="AddShous"  formType="submit" >
-				{{collect}}
-				  </button>
-
+			{{collect1}}
+	 </button>
 		<view class="line"></view>
 		<view class="desc">{{shop.desc}}</view>
 	</view>
@@ -25,15 +24,16 @@
 
 		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
 			<block wx:for="{{data_data}}" wx:key="id" >
-
       <view  wx:for-item="classify" wx:key="id" id="{{classify.id}}">
-	
 				<view class="goods"  wx:for-item="id" wx:key="*this">
+
 					<navigator url="/page/fooddetail/fooddetail?id={{item.ID}}" >
+          
         	<image name="delivery_FileName" value="{{delivery_FileName}}" class="pic" src="{{item.FileName}}"></image>
 					<view  name="delivery_FoodName" value="{{delivery_FoodName}}" class="name ellipsis">{{item.FoodName}}</view>
 					<view  name="delivery_Sale" value="{{delivery_Sale}}" class="sold">销量{{item.Sale}}</view>
 					<view  name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.FoodSprice}}</view>
+
 </navigator>
 					<button class="addCart"  name="delivery_id" id="{{item.ID}}"   bindtap="addshop" formType="submit" >
 					  <image src="/imgs/shop/plus.png"></image>
@@ -44,8 +44,6 @@
 
         </block>
 		</scroll-view>
-
-    
 	</view>
   </form>
 
