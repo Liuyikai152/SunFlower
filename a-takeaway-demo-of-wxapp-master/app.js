@@ -12,6 +12,7 @@ App({
 	},
 	globalData: {
 		hasLogin: false,
+    StorNumber:"",
   }
 		
 	});

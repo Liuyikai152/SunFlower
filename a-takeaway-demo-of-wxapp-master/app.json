@@ -1,5 +1,6 @@
 {
   "pages": [
+    "page/trolley/trolley",
     "page/index/index",
     "page/shop/shop",
     "page/order/order",
@@ -13,7 +14,8 @@
     "page/mine/details/details",
    "page/index/search/search",
     "page/foods/foods",
-    "dutu/dutu"  
+    "dutu/dutu"
+    
   ],
 
   "window": {
@@ -36,9 +38,15 @@
         "text": "首页"
       },
       {
+        "pagePath":"page/trolley/trolley",
+        "iconPath": "/imgs/tabBar/trolley1.png",
+        "selectedIconPath": "/imgs/tabBar/trolleyselect.jpg",
+        "text": "购物车"
+      },
+      {
         "pagePath": "page/order/order",
         "iconPath": "imgs/tabBar/order.png",
-        "selectedIconPath": "imgs/tabBar/order-selected.png",
+        "selectedIconPath": "imgs/tabBar/orderselect.jpg",
         "text": "订单"
       },
       {
