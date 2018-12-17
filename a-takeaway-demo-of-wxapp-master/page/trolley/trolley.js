@@ -5,6 +5,7 @@ Page({
 
   data:{
     sellStatus:1,
+    price:0,
 
   },
   onLoad: function () {
@@ -19,15 +20,15 @@ Page({
 
 
         wx.request({
-          url: 'http://localhost:24380/Trolley/GetTrolleyByStore',
+          url: 'http://localhost:24380/TrolleyDetail/GetTrolleyDetails',
           method: 'GET',
           data: {          
-            userID: UserID
+            id: UserID
           },
           success: function (res) {
-            // res.data.FoodSprice
+          console.log(res.data)
             that.setData({
-              trolley: res.data
+              trolleyDetails: res.data
             })
 
           }
@@ -54,7 +55,11 @@ Page({
   carReduce: function (event) {
     var that = this;
     var index = event.currentTarget.id;
-    var sun = parseInt(index)-1;
+    if(index>1){
+    var sun = parseInt(index)-1;}
+    else{
+
+    }
     that.setData({
       sellStatus: sun,
     })

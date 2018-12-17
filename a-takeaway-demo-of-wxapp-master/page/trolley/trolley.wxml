@@ -5,19 +5,23 @@
 
 <view class="cart-cart">
 <!-- wx:for-index="_k1" wx:for-item="_v1" -->
-  <block wx:for="{{trolley}}" wx:key="id" ><view class="cartview shoppinglist-cartview">
+  <block wx:for="{{trolleyDetails}}" wx:key="id" ><view class="cartview shoppinglist-cartview">
   <view class="shoppingitem shoppinglist-shoppingitem">
     <image class="item-choose shoppinglist-item-choose" src="/imgs/tabBar/choose_n.png"/>
+    <!-- <navigator url="/page/fooddetail/fooddetail.js" > -->
     <image class="item-cover shoppinglist-item-cover" src="{{item.FileName}}"/>
+     <!-- </navigator> -->
     <view class="item-content shoppinglist-item-content">
+
       <view class="item-title shoppinglist-item-title" name="price_id" value="{item.ID}" >{{item.FoodName}}</view>
       <view class="item-bottom shoppinglist-item-bottom">
       <view class="item-prize shoppinglist-item-prize">￥{{item.FoodSprice}}</view>
-        <view class="item-prize shoppinglist-item-prize">合计￥{{item.FoodSprice*sellStatus}}</view>
+        <view class="item-prize shoppinglist-item-prize">合计￥{{item.Money}}</view>
+       
         <view class="action-btns shoppinglist-action-btns" catchtap="_dispatch" data-catchtap="handleAdd" data-path="shoppinglist.{{_k1}}">
-          <image class="btn-minus shoppinglist-btn-minus action-btn shoppinglist-action-btn" src="/imgs/tabBar/minus_n.png"  bindtap='carReduce' id="{{sellStatus}}"  />
-          <text >{{sellStatus}}</text>
-          <image class="btn-plus shoppinglist-btn-plus action-btn shoppinglist-action-btn" src="/imgs/tabBar/plus_n.png" bindtap='carAdd' id="{{sellStatus}}"  />
+          <image class="btn-minus shoppinglist-btn-minus action-btn shoppinglist-action-btn" src="/imgs/tabBar/minus_n.png"  bindtap='carReduce' id="{{item.id}}"  />
+          <text >{{item.Num}}</text>
+          <image class="btn-plus shoppinglist-btn-plus action-btn shoppinglist-action-btn" src="/imgs/tabBar/plus_n.png" bindtap='carAdd' id="{{item.id}}"  />
         </view>
       </view>
     </view>

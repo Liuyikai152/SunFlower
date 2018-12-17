@@ -18,6 +18,8 @@ Page({
       }
     })
   },
+
+
   addshop: function (event) {
 
     var Foodid = event.currentTarget.id;
@@ -31,6 +33,7 @@ Page({
         var storenumber = resdate.data[0].StoreNumber;
         var Price = resdate.data[0].FoodSprice;
 
+        //查询用户信息
         wx.request({
           url: 'http://localhost:24380/api/users/GetUsers',
           method: 'GET',
@@ -41,26 +44,71 @@ Page({
             var userphone = resaa.data[0].UserPhone;
             var time = util.formatTime(new Date());
 
-            //添加购物车
             wx.request({
-              url: 'http://localhost:24380/Trolley/AddTrolley',
-              method: 'POST',
+              url: 'http://localhost:24380/TrolleyDetail/GetTrolleyByNumber',
+              method: 'get',
               data: {
-                trolleynumber: "GWC" + FoodNumber,
-                userid: UserID,
-                storenumber: storenumber,
-                foodnumber: FoodNumber,
-                createtime: time,
-                money: Price,
-                userphone: userphone,
-                addressid: AddressID
+                TrolleyNumber: "GWC" + FoodNumber
               },
-              success: function () {
-                wx.showToast({
-                  title: '添加购物车成功!',
-                })
+              success: function (res) {
+
+
+                if (res.data > 0) {
+                  //添加购物车
+                  wx.request({
+                    url: 'http://localhost:24380/Trolley/AddTrolley',
+                    method: 'POST',
+                    data: {
+                      trolleynumber: "GWC" + FoodNumber,
+                      userid: UserID,
+                      storenumber: storenumber,
+                      foodnumber: FoodNumber,
+                      createtime: time,
+                      money: Price,
+                      userphone: userphone,
+                      addressid: AddressID
+                    },
+                    success: function () {
+                      wx.showToast({
+                        title: '添加购物车成功!',
+                      })
+                    }
+                  })
+
+                  //添加购物车详情
+                  wx.request({
+                    url: 'http://localhost:24380/TrolleyDetail/AddTrolleyDetails',
+                    method: 'POST',
+                    data: {
+                      trolleynumber: "GWC" + FoodNumber,
+                      userid: UserID,
+
+                      foodnumber: FoodNumber,
+                      createtime: time,
+                      prices: Price,
+                      num: 1,
+                      money: Price * 1
+                    },
+                    success: function (resd) {
+                      console.log(resd);
+                      if (resd.data <= 0) {
+                        wx.showToast({
+                          title: '添加购物车详情失败!',
+                        })
+                      }
+                    }
+                  })
+                }
+                else {
+                  wx.showToast({
+                    title: '您以添加到购物车,请查看购物车',
+                  })
+                }
               }
             })
+
+
+
           }
         })
       }

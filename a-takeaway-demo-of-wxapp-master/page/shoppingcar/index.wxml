@@ -1,0 +1,60 @@
+<!--pages/shopcart/shopcart.wxml-->
+
+ <view class='container'>
+  <view class='section section-good'>
+    <checkbox-group bindchange="checkboxChange">
+      <view class='good' wx:for='{{goodList}}' wx:key="good.Id" wx:for-item="good" >
+        <label class="checkbox">
+          <checkbox value="{{good.Id}}" checked="{{good.checked}}" hidden='hidden' />
+          <icon type="circle" size="23" wx:if="{{!good.checked}}"></icon>
+          <icon type="success" size="23" wx:if="{{good.checked}}"></icon>
+        </label>
+        <navigator url="page/fooddetail/fooddetail?id={{good.id}}" >
+        <image bindtap="navigateDetail"  data-aid="{{good.id}}" class='cover' src='{{good.FileName}}' ></image>
+        </navigator>
+        <view class='content' bindtap="navigateDetail" data-aid="{{good.Id}}">
+          <!-- <view hidden='hidden' class='text name'>{{good.ProductID}}</view> -->
+          <view class='text name' >{{good.FoodName}}</view>
+          <!-- <view class='text author' >{{good.ProductSize}}</view>
+          <view class='text desc'>{{good.Texture}}</view> -->
+          <view class='text price' >¥{{good.FoodSprice}}</view>
+        </view>
+        <view class='right'>
+       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.Id}}'></image>
+              </view>
+        <view class='stepper'>
+          <view class='subtract {{good.Num == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
+          <input class='count' type='number' value='{{good.Num}}'></input>
+          <view class='add' data-index="{{index}}" catchtap='addtap'>+</view>
+        </view>
+      </view>
+    </checkbox-group>
+    
+  </view>
+
+
+  <!-- <view class='cart-pay'>
+                <text class='cart_pay' bindtap="go" data-id="{{good.Id}}">清空购物车</text>
+              </view> -->
+
+  <view class='section-bottom'>
+    <checkbox-group bindchange="selectalltap">
+      <label class='checkbox-allcheck'>
+        <checkbox value="{{!checkAll}}" checked="{{checkAll}}" hidden='hidden' />
+        <icon type="circle" size="23" wx:if="{{!checkAll}}"></icon>
+        <icon type="success" size="23" wx:if="{{checkAll}}"></icon>
+        <text class='check-all-text'>全选</text>
+      </label>
+    </checkbox-group>
+    <view class="total">
+      <view class='totalCount'>已选择
+        <text>{{totalCount}}</text>件商品
+      </view>
+      <view class='totalPrice'>总价：
+        <text>¥{{totalPrice}}</text>
+      </view>
+    </view>
+    <view bindtap='order' class='btn {{totalCount > 0 ? "btn-primary" : "btn-default"}}'>去结算</view>
+  </view>
+</view>
+
