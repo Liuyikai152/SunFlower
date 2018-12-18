@@ -158,6 +158,16 @@ Page({
                 })
               }, 1000) //延迟时间 这里是1秒
 
+
+              wx.request({
+                url: 'http://localhost:24380/TrolleyDetail/DeleteTrolleyDetail',
+                method: 'GET',
+
+                success: function (res) {
+                
+                }
+              })
+             
                wx.navigateTo({
                 url: "/page/order/order",
               })
