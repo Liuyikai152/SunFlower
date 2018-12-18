@@ -27,7 +27,7 @@ Page({
   handleSubmit: function (event) {
     var delivery_content = event.detail.value.delivery_content;
     var StoreNumber = event.detail.value.delivery_StoreNumber;
-
+    
     wx.request({
       url: 'http://localhost:24380/api/users/GetUsers',
       method: 'GET',
@@ -48,6 +48,19 @@ Page({
             wx.showToast({
               title: '添加成功!'
             })
+            if (delivery_content=="")
+            {
+              wx.showModal({
+                title: '提示',
+                content: '请输入评论内容',
+              })
+            }
+            else{
+              wx.showToast({
+                title: '添加成功!'
+              })
+            }
+           
           },
         })
       }

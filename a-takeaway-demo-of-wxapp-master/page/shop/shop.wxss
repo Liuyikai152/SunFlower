@@ -141,7 +141,7 @@ page {
 	border-radius: 50%;
 }
 
-.header  .addCarts{
+.header .addCarts{
 	position: absolute;
 	right: 30rpx;
 	bottom: 45rpx;
