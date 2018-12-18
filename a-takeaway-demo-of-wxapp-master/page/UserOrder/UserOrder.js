@@ -45,9 +45,6 @@ Page({
             CommentTime: util.formatTime(new Date())
           },
           success: function () {
-            wx.showToast({
-              title: '添加成功!'
-            })
             if (delivery_content=="")
             {
               wx.showModal({
