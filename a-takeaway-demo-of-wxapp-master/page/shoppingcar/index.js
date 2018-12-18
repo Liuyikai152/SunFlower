@@ -56,7 +56,7 @@ Page({
 
     console.log(id);
     wx.request({
-      url: 'http://localhost:24380/TrolleyDetail/deleteTrolleyDetails?ID=' + id,
+      url: 'http://localhost:24380/TrolleyDetail/deleteTrolleyDetails?ID='+ id,
       type: 'GET',
       success: function(res) {
 
