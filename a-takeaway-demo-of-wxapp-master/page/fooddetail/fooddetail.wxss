@@ -1,1 +1,5 @@
 /* page/fooddetail/fooddetail.wxss */
+.Img{
+
+  height: 100px;
+}

@@ -1,5 +1,8 @@
 Page({
   onLoad: function (options) {
+
+
+    
     var that = this;
     wx.request({
       url: 'http://localhost:24380/Order/GetOrders',

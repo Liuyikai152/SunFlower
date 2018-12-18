@@ -9,6 +9,15 @@
   line-height: 1.42857;
 } 
 
+
+.weui-cell_bdd{
+
+   display: none;
+}
+.Img{
+
+  height: 300px;
+}
 .container {
   width: 100%;
   min-height: 100%;
@@ -152,6 +161,7 @@
   background-color: #fbb304;
   margin-right: 20rpx;
   border-radius: 18rpx;
+  font-size:26rpx;
 }
 
 .section-bottom .btn-default {

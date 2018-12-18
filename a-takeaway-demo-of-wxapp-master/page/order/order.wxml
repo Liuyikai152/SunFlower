@@ -6,11 +6,11 @@
       <view  wx:for-item="classify" wx:key="id" id="{{classify.id}}" >
 				<view class="goods"  wx:for-item="id" wx:key="*this">
         	<navigator url="/page/UserOrder/UserOrder?id={{item.ID}}" >
-        	<image  name="delivery_FileName" value="{{delivery_FileName}}" class="pic" src="{{item.FileName}}"></image>
-					<view name="delivery_FoodName" value="{{delivery_FoodName}}" class="name ellipsis">{{item.FoodName}}</view>
+        	<!-- <image  name="delivery_FileName" value="{{delivery_FileName}}" class="pic" src="{{item.FileName}}"></image> -->
+					<view name="delivery_FoodName" value="{{delivery_FoodName}}" class="name ellipsis">{{item.Address}}</view>
 					<view   name="delivery_Sale" value="{{delivery_Sale}}" class="sold">数量{{item.Num}}</view>
 
-					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.Prices}}</view>
+					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.Money}}</view>
   </navigator>
 				</view>
 			</view>

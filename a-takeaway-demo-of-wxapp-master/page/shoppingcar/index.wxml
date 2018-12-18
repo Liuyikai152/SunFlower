@@ -1,27 +1,30 @@
 <!--pages/shopcart/shopcart.wxml-->
 
  <view class='container'>
+
   <view class='section section-good'>
     <checkbox-group bindchange="checkboxChange">
-      <view class='good' wx:for='{{goodList}}' wx:key="good.Id" wx:for-item="good" >
+      <view class='good' wx:for='{{goodList}}' wx:key="good.ID" wx:for-item="good" >
         <label class="checkbox">
-          <checkbox value="{{good.Id}}" checked="{{good.checked}}" hidden='hidden' />
+          <checkbox value="{{good.ID}}" checked="{{good.checked}}" hidden='hidden' />
           <icon type="circle" size="23" wx:if="{{!good.checked}}"></icon>
           <icon type="success" size="23" wx:if="{{good.checked}}"></icon>
         </label>
-        <navigator url="page/fooddetail/fooddetail?id={{good.id}}" >
-        <image bindtap="navigateDetail"  data-aid="{{good.id}}" class='cover' src='{{good.FileName}}' ></image>
+        <navigator url="/page/fooddetail/fooddetail?id={{good.ID}}" >
+        <image bindtap="navigateDetail"  data-aid="{{good.ID}}" class='cover' src='{{good.FileName}}' ></image>
         </navigator>
-        <view class='content' bindtap="navigateDetail" data-aid="{{good.Id}}">
-          <!-- <view hidden='hidden' class='text name'>{{good.ProductID}}</view> -->
+        <view class='content' bindtap="navigateDetail" data-aid="{{good.ID}}">
+    
           <view class='text name' >{{good.FoodName}}</view>
-          <!-- <view class='text author' >{{good.ProductSize}}</view>
-          <view class='text desc'>{{good.Texture}}</view> -->
+ 
           <view class='text price' >¥{{good.FoodSprice}}</view>
         </view>
         <view class='right'>
-       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.Id}}'></image>
+       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.ID}}'></image>
               </view>
+         <view><image class='Img'></image></view>
+                
+             
         <view class='stepper'>
           <view class='subtract {{good.Num == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
           <input class='count' type='number' value='{{good.Num}}'></input>
@@ -33,9 +36,6 @@
   </view>
 
 
-  <!-- <view class='cart-pay'>
-                <text class='cart_pay' bindtap="go" data-id="{{good.Id}}">清空购物车</text>
-              </view> -->
 
   <view class='section-bottom'>
     <checkbox-group bindchange="selectalltap">
@@ -48,13 +48,17 @@
     </checkbox-group>
     <view class="total">
       <view class='totalCount'>已选择
+      <!-- <input name="delivery_Num" class="weui-cell_bdd"  value="{{totalCount}}" /> -->
         <text>{{totalCount}}</text>件商品
       </view>
       <view class='totalPrice'>总价：
         <text>¥{{totalPrice}}</text>
+         <!-- <input name="delivery_Money" class="weui-cell_bdd"  value="{{totalPrice}}" /> -->
       </view>
     </view>
-    <view bindtap='order' class='btn {{totalCount > 0 ? "btn-primary" : "btn-default"}}'>去结算</view>
+    
+    <button bindtap='order' class='btn {{totalCount > 0 ? "btn-primary" : "btn-default"}}'  >去结算 </button>
   </view>
+  
 </view>
 

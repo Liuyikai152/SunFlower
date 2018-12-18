@@ -1,8 +1,9 @@
 {
   "pages": [
-       "page/shoppingcar/index",
-    "page/trolley/trolley",
+    
+    
     "page/index/index",
+    "page/shoppingcar/index",
     "page/fooddetail/fooddetail",
     "page/shop/shop",
     "page/order/order",

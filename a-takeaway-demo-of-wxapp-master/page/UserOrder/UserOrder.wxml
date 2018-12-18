@@ -1,11 +1,19 @@
+
+<view class='container'>
+  <scroll-view scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscroll="onScroll" >
+ 
+
+
 <block  wx:for="{{res_data}}" wx:key="id" >
- <navigator url="/page/shop/shop?id=4" >
-  <text class='FoodName'>{{item.FoodName}}</text>
-  <image class="img" src="{{item.FileName}}"></image>
-	<view class="sold">数量:{{item.Num}}</view>
-	<view class="price">单价:￥{{item.Prices}}</view>
-  <view class="price">总价:￥{{item.Money}}</view>
-  <view class="price">支付状态:{{item.OrderState==10?'已支付':'待支付'}}</view>
+ <navigator url="/page/fooddetail/fooddetail?id={{item.FID}}" >
+   
+  	<image  name="delivery_FileName" value="{{delivery_FileName}}" class="pic" src="{{item.FileName}}"></image>
+					<view name="delivery_FoodName" value="{{delivery_FoodName}}" class="name ellipsis">{{item.FoodName}}</view>
+					<view   name="delivery_Sale" value="{{delivery_Sale}}" class="sold">数量{{item.Num}}</view>
+
+					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.FoodsPrice}}</view>
+  
+ 
  </navigator>
 
 
@@ -14,7 +22,7 @@
       <view class="weui-cells weui-cells_after-title margin-top">
 
         <view class="weui-cell weui-cell_input">
-
+  <view><image class='Imgs'></image></view>
           <view class="weui-cell__hd">
             <view class="weui-label">  发表评论:</view>
           </view>
@@ -36,3 +44,7 @@
 
 
 </block>
+
+ </scroll-view>
+
+</view>

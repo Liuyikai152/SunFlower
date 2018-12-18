@@ -8,6 +8,40 @@ page {
 
 height: 170px;
 }
+
+.container {
+	height: 100%;
+}
+scroll-view {
+	height: 100%;
+}
+
+.pic {
+	float: left;
+	width: 200rpx;
+	height: 200rpx;
+	margin-right: 20rpx;
+  margin-top: 20rpx;
+
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.section-good {
+  margin-bottom: 100rpx;
+}
+
+.Imgs{
+
+  height: 100px;
+}
+
 .pinlun{
   color: blueviolet;
 }

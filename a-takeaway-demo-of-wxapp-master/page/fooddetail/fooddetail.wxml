@@ -6,9 +6,9 @@
   <view class="price">描述:{{item.FoodSummary}}</view>
   
 
-
+  <view><image class='Img'></image></view>
   <button class="addCart"  name="delivery_id" id="{{item.ID}}"   bindtap="addshop" formType="submit" >
-		添加购物车
+		加入购物车
 	</button>
   
 

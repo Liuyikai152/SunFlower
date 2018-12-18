@@ -1,5 +1,7 @@
 // pages/shopcart/shopcart.js
 
+var util = require('../../utils/util.js');
+
 var goodList = []; //购物车
 Page({
   /**
@@ -7,7 +9,7 @@ Page({
    */
 
   data: {
-
+    aload:[],
     hasList: false, // 列表是否有数据
     'checked': false,
     'checkAll': false, // 全选状态，默认全选
@@ -23,36 +25,27 @@ Page({
       method: 'GET',
       success: function (resaa) {
         var UserID = resaa.data[0].ID;
-   //购物车
-    wx.request({
-      url: 'http://localhost:24380/TrolleyDetail/GetTrolleyDetails',
-      method: 'GET',
-      data: {
-        Id: UserID,
-      },
-      success: function(res) {
-        console.log(res.data)
-        that.setData({
-          goodList: res.data,
-          // hasList:true,length
-        })
-      }
+        //购物车
+          wx.request({
+            url: 'http://localhost:24380/TrolleyDetail/GetTrolleyDetails',
+            method: 'GET',
+            data: {
+              Id: UserID,
+            },
+            success: function(res) {
+              console.log(res.data)
+              that.setData({
+                goodList: res.data,
+                // hasList:true,length
+              })
+            }
 
-    })
-
+          })
       }
-    }) 
+  })
 
   },
-  // onShow: function () {
-  //   var goodList = wx.getStorageSync("goodList")
-  //   this.setData({
-  //     cartList: false,
-  //     goodList: goodList
-  //   })
-  //   this.cartItems
-
-  // },
+  
 
   //删除购物车单个缓存
   shanchu: function(e) {
@@ -60,8 +53,10 @@ Page({
     var goodList = this.data.goodList //获取购物车列表
     var index = e.currentTarget.dataset.index //获取当前点击事件的下标索引
     var id = e.currentTarget.dataset.aid
+
+    console.log(id);
     wx.request({
-      url: 'http://localhost:8765/TProduct/DeleteCarts?Id=' + id,
+      url: 'http://localhost:24380/TrolleyDetail/deleteTrolleyDetails?ID=' + id,
       type: 'GET',
       success: function(res) {
 
@@ -83,30 +78,106 @@ Page({
 
 
   },
-  //提示
-  // go: function (e) {
-  //   this.setData({
-  //     goodList: []
-  //   })
-  //   wx.setStorageSync("goodList", [])
-  // },
-
-  //
+  
   order: function() {
-    wx.navigateTo({
-      url: "/pages/order/order",
-    })
+  
+      //查询用户信息
+      wx.request({
+        url: 'http://localhost:24380/api/users/GetUsers',
+        method: 'GET',
+        success: function (resaa) {
+
+          var UserID = resaa.data[0].ID;
+          var AddressID = resaa.data[0].UserAddressID;
+          //购物车
+          wx.request({
+            url: 'http://localhost:24380/TrolleyDetail/GetTrolleyDetails',
+            method: 'GET',
+            data: {
+              Id: UserID,
+            },
+            success: function (resuser) {
+
+              for (var i = 0; i < resuser.data.length; i++) {
+                
+                var trolleyid = resuser.data[i].ID;
+                var foodnumber = resuser.data[i].FoodNumber;
+                var storenumber = resuser.data[i].StoreNumber;
+                var userid = UserID;
+                var ordermoney = resuser.data[i].FoodSprice;
+                var addersid = AddressID;
+                var userphone = resuser.data[i].UserPhone;
+                var createtime = util.formatTime(new Date());
+                var num = resuser.data[i].Num;
+                var orderstate = 11; 
+                var ordernumber = "DD" + util.formatTime(new Date());
+               
+                //添加订单详情
+                wx.request({
+                  url: 'http://localhost:24380/UserOrder/AddOrder',
+                  method: 'POST',
+                  data: {
+                    trolleyid: trolleyid,
+                    foodnumber: foodnumber,
+                    storenumber: storenumber,
+                    userid: userid,
+                    addersid: addersid,
+                    userphone: userphone,
+                    ordermoney: ordermoney,
+                    createtime: createtime,
+                    num: num,
+                    orderstate: orderstate,  
+                    ordernumber: ordernumber
+                  },
+                  success: function () {
+                    wx.showToast({
+                      title: '添加订单成功!',
+                    })
+                  }
+                })
+
+              
+              }
+           
+              setTimeout(function () {
+                //添加订单
+                wx.request({
+                  url: 'http://localhost:24380/UserOrder/UserOrdersAdd?OrderNumber=' + ordernumber,
+                  method: 'POST',
+
+                  success: function (res) {
+                    console.log(res.data)
+
+                    if (res.data.length > 0) {
+                      wx.showToast({
+                        title: '添加订单成功!',
+                      })
+                    }
+
+                  }
+                })
+              }, 1000) //延迟时间 这里是1秒
+
+               wx.navigateTo({
+                url: "/page/order/order",
+              })
+            }
+         })
+        }
+        })
+
+   
+      
   },
 
   // 跳转至详情页
   navigateDetail: function (e) {
     var id = e.currentTarget.dataset.aid;//获取显示界面的Id值
-console.log(id);
+
     wx.navigateTo({
-      url: '../commodity details_spxiangqing/index?id=' + e.currentTarget.dataset.aid
+      url: '/page/fooddetail/fooddetail?id=' + e.currentTarget.dataset.aid
     })
   },
-
 
 
 
@@ -158,6 +229,7 @@ console.log(id);
     var goodList = this.data.goodList;
     var count = goodList[index].Num;
     goodList[index].Num++;
+    
     this.setData({
       'goodList': goodList
     });
@@ -218,55 +290,6 @@ console.log(id);
     });
     this.calculateTotal();
   }
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Page({
-//   data: {
-//     windowWidth: wx.getSystemInfoSync().windowWidth,
-//     windowHeight: wx.getSystemInfoSync().windowHeight,
-//     hiddenSmallImg: true,
-//     countsArray: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-//     productCounts: 1,
-//     currentTabsIndex: 0,
-//     cartTotalCounts: 0,
-//   },
+          
+  })   
+      
