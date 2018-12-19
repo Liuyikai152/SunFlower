@@ -54,14 +54,15 @@ Page({
     var index = e.currentTarget.dataset.index //获取当前点击事件的下标索引
     var id = e.currentTarget.dataset.aid
 
-    console.log(id);
+   
     wx.request({
       url: 'http://localhost:24380/TrolleyDetail/deleteTrolleyDetails?ID='+ id,
       type: 'GET',
       success: function(res) {
-
+console.log(res)
       }
     })
+
     goodList.splice(index, 1)
     this.setData({
       goodList: goodList
@@ -158,11 +159,10 @@ Page({
                 })
               }, 1000) //延迟时间 这里是1秒
 
-
+              //添加订单后删除购物车 
               wx.request({
                 url: 'http://localhost:24380/TrolleyDetail/DeleteTrolleyDetail',
                 method: 'GET',
-
                 success: function (res) {
                 
                 }
