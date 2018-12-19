@@ -1,4 +1,6 @@
 // page/fooddetail/fooddetail.js
+var app = getApp();
+var server = require('../../utils/server');
 var util = require('../../utils/util.js');
 Page({
   /**

@@ -11,3 +11,11 @@
  
 
 }
+
+.right image{
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  margin-right: -1rpx;
+  margin-top: -100rpx;
+}

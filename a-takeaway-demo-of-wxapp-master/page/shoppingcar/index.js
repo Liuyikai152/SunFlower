@@ -9,8 +9,8 @@ Page({
    */
 
   data: {
-    aload:[],
-    hasList: false, // 列表是否有数据
+    
+    hasList: true, // 列表是否有数据
     'checked': false,
     'checkAll': false, // 全选状态，默认全选
     'totalCount': 0,
@@ -57,9 +57,9 @@ Page({
    
     wx.request({
       url: 'http://localhost:24380/TrolleyDetail/deleteTrolleyDetails?ID='+ id,
-      type: 'GET',
+      method: 'GET',
       success: function(res) {
-console.log(res)
+
       }
     })
 
@@ -105,7 +105,7 @@ console.log(res)
                 var foodnumber = resuser.data[i].FoodNumber;
                 var storenumber = resuser.data[i].StoreNumber;
                 var userid = UserID;
-                var ordermoney = resuser.data[i].FoodSprice;
+                var ordermoney = resuser.data[i].FoodSprice * resuser.data[i].Num;
                 var addersid = AddressID;
                 var userphone = resuser.data[i].UserPhone;
                 var createtime = util.formatTime(new Date());
@@ -167,10 +167,12 @@ console.log(res)
                 
                 }
               })
-             
+             this.onLoad();
                wx.navigateTo({
                 url: "/page/order/order",
               })
+
+              
             }
          })
         }
@@ -223,6 +225,18 @@ console.log(res)
       return;
     } else {
       goodList[index].Num--;
+      //修改数量
+      wx.request({
+        url: 'http://localhost:24380/TrolleyDetail/UptdateTrolleyDetails?num=' + goodList[index].Num + "&&id=" + goodList[index].AID,
+        method:'post',
+        data:{
+          num: goodList[index].Num,
+          id: goodList[index].AID
+        },
+        success: function (res) {
+
+        }
+      })
       this.setData({
         'goodList': goodList
       });
@@ -239,7 +253,19 @@ console.log(res)
     var goodList = this.data.goodList;
     var count = goodList[index].Num;
     goodList[index].Num++;
-    
+
+      wx.request({
+        url: 'http://localhost:24380/TrolleyDetail/UptdateTrolleyDetails?num=' + goodList[index].Num + "&&id=" + goodList[index].AID,
+        method: 'POST',
+       
+        heads: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+
+        }
+      })
+     
     this.setData({
       'goodList': goodList
     });

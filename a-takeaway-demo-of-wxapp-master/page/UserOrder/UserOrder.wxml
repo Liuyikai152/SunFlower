@@ -11,7 +11,7 @@
 					<view name="delivery_FoodName" value="{{delivery_FoodName}}" class="name ellipsis">{{item.FoodName}}</view>
 					<view   name="delivery_Sale" value="{{delivery_Sale}}" class="sold">数量{{item.Num}}</view>
 
-					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.FoodsPrice}}</view>
+					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.FoodsPrice*item.Num}}</view>
   
  
  </navigator>

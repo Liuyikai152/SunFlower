@@ -12,6 +12,10 @@
 
 					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.Money}}</view>
   </navigator>
+
+    <view class='right'>
+       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{item.ID}}'></image>
+              </view>
 				</view>
 			</view>
   

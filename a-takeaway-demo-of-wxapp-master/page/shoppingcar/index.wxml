@@ -20,7 +20,7 @@
           <view class='text price' >¥{{good.FoodSprice}}</view>
         </view>
         <view class='right'>
-       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.ID}}'></image>
+       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.AID}}'></image>
               </view>
          <view><image class='Img'></image></view>
                 

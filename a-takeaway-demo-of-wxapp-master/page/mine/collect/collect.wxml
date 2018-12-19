@@ -6,5 +6,7 @@
     {{item.Conntent}}
       </navigator>
   </view>
-
+ <view class='right'>
+       <image src='/imgs/tabBar/timgD9JR83JY.jpg' bindtap='shanchu' data-index="{{index}}" data-aid='{{item.AID}}'></image>
+              </view>
 </block>
