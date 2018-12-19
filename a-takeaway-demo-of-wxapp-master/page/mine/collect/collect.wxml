@@ -3,7 +3,7 @@
   <view class="Conntent">
    <navigator url="/page/shop/shop?id={{item.ID}}" >
 		<image class='storeImg' bindtap="tapBanner" src="{{item.StoreImg}}"/>
-    {{item.Conntent}}
+   <view class='con'> {{item.Conntent}}</view>
       </navigator>
   </view>
  <view class='right'>

@@ -1,3 +1,6 @@
+
+var app = getApp();
+
 Page({
 
   onLoad: function (options) {
@@ -27,8 +30,11 @@ Page({
         })
       }
     })
+  
+    this.onLoad();
   },
 
 
+   
  
 })

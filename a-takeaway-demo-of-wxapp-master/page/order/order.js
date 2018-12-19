@@ -1,5 +1,6 @@
 
 var app = getApp();
+
 Page({
   onLoad: function (options) {   
     var that = this;

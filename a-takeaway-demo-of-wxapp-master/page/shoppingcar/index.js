@@ -1,5 +1,5 @@
 // pages/shopcart/shopcart.js
-
+var app = getApp();
 var util = require('../../utils/util.js');
 
 var goodList = []; //购物车
@@ -167,18 +167,21 @@ Page({
                 
                 }
               })
-             this.onLoad();
+         
                wx.navigateTo({
                 url: "/page/order/order",
               })
 
-              
+           
             }
          })
         }
+
+
+
         })
 
-   
+   this.onLoad();
       
   },
 

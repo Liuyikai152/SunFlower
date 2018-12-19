@@ -1,7 +1,8 @@
 /* page/mine/collect/collect.wxss */
 
 .storeImg  {
-  width: 230px;
+  margin:20rpx;
+  width: 150px;
 	height: 100px;
   float: left
 }
@@ -10,6 +11,10 @@
   display: flex;
  
 
+}
+.con{
+ margin-top:50px;
+float: right;
 }
 
 .right image{
