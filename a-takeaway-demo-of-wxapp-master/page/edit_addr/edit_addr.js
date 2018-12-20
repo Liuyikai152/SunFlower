@@ -3,7 +3,7 @@
 var tcity = require("../../utils/citys.js");
 const constant = require("../../utils/constant.js");
 const http = require('../../utils/http.js');
-const util = require('../../utils/util.js');
+var util = require('../../utils/util.js');
 
 var app = getApp()
 Page({
@@ -118,17 +118,17 @@ Page({
 
 
     var that = this;
-    wx.login({
-      success: function () {
-        wx.getUserInfo({
-          success: function (res) {
-            that.setData({
-              userInfo: res.userInfo
-            })
-          }
-        })
-      }
-    });
+    // wx.login({
+    //   success: function () {
+    //     wx.getUserInfo({
+    //       success: function (res) {
+    //         that.setData({
+    //           userInfo: res.userInfo
+    //         })
+    //       }
+    //     })
+    //   }
+    // });
   },
 
   //添加地址
@@ -138,10 +138,7 @@ Page({
     var delivery_address = event.detail.value.delivery_address;
     var delivery_street = event.detail.value.delivery_street;
     var delivery_is_default = event.detail.value.delivery_is_default == false ? 0 : 1;
-    console.log(delivery_name);
-    console.log(delivery_UserGender);
-    console.log(delivery_address);
-    console.log(delivery_is_default);
+
     //添加收货人地址
     wx.request({
       url: 'http://localhost:24380/api/User_Adders/AddUserAdder',
@@ -151,7 +148,9 @@ Page({
         UserGender: delivery_UserGender,
         ProvinceName: delivery_address,
         Address: delivery_address,
-        IsDefault: 0
+        IsDefault:delivery_is_default,
+        CreateTime:util.formatTime(new Date()),
+        userid:5,   
       },
       success: function () {
         wx.showToast({

@@ -45,6 +45,12 @@
          <view class="weui-cell__bd">
            <input name="delivery_phone" class="weui-input" placeholder="请输入商家店铺电话" value="{{delivery_phone}}" />
           </view>
+          <view class="weui-cell__bd">
+          <radio-group   name="delivery_StoreType">
+             <radio value='个体'>个体</radio>
+             <radio value='连锁'>连锁</radio>
+          </radio-group>  
+          </view>
           <view class="weui-cell__bdd">
            <input name="Createtime" class="weui-input" placeholder="{{time}}" value="{{time}}" />
           </view>
@@ -52,6 +58,7 @@
           <view class="weui-cell__bdd">
            <input name="Endtime" class="weui-input" placeholder="{{time}}" value="{{time}}" />
           </view>
+          
       </view>
      
    

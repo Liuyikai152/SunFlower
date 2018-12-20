@@ -21,10 +21,11 @@ Page({
     var delivery_phone = event.detail.value.delivery_phone;
       var Createtime = event.detail.value.Createtime;
       var Endtime = event.detail.value.Endtime;
-    var atue=6;
+      var delivery_StoreType = event.detail.value.delivery_StoreType == false ? "个体" : "连锁";
+    var atue=5;
     var state=9;
-      console.log(Createtime);
-    return;
+      console.log(delivery_StoreType);
+  
     //申请店铺
     wx.request({
       url: 'http://localhost:24380/Store/AddStore',
@@ -38,8 +39,8 @@ Page({
         State: state,
         CreateTime: Createtime,
         EditTime: Endtime,
-        Conntent: delivery_Title
-
+        Conntent: delivery_Title,
+        StoreType:delivery_StoreType
 
       },
       success: function () {

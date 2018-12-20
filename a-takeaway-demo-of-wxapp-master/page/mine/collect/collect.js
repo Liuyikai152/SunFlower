@@ -35,6 +35,26 @@ Page({
   },
 
 
-   
+  onScroll: function (e) {
+    if (e.detail.scrollTop > 100 && !this.data.scrollDown) {
+      this.setData({
+        scrollDown: true
+      });
+    } else if (e.detail.scrollTop < 100 && this.data.scrollDown) {
+      this.setData({
+        scrollDown: false
+      });
+    }
+  },
+  toNearby: function () {
+    var self = this;
+    self.setData({
+      scrollIntoView: 'nearby'
+    });
+    self.setData({
+      scrollIntoView: null
+    });
+  },
+
  
 })

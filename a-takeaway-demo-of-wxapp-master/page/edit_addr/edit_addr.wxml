@@ -18,7 +18,7 @@
             <view class="weui-label">性别:</view>
           </view>
         <view class="weui-cell__bd" >
-          <radio-group bindchange="radioChange"  name="delivery_UserGender">
+          <radio-group  name="delivery_UserGender">
              <radio value='3'>先生</radio>
              <radio value='4'>女士</radio>
           </radio-group>
@@ -79,4 +79,7 @@
   </picker-view>
 </view>
   </form>
+
+  <view>
+  </view>
 </view>

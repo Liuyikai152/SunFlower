@@ -17,35 +17,40 @@ Page({
     'totalPrice': 0
   },
   onLoad: function() {
-    var that = this;
   
+
+  },
+  
+  onShow:function(){
+    var that = this;
+
     //用户编号
     wx.request({
       url: 'http://localhost:24380/api/users/GetUsers',
       method: 'GET',
       success: function (resaa) {
         var UserID = resaa.data[0].ID;
-        //购物车
-          wx.request({
-            url: 'http://localhost:24380/TrolleyDetail/GetTrolleyDetails',
-            method: 'GET',
-            data: {
-              Id: UserID,
-            },
-            success: function(res) {
-              console.log(res.data)
-              that.setData({
-                goodList: res.data,
-                // hasList:true,length
-              })
-            }
 
-          })
+        //购物车
+        wx.request({
+          url: 'http://localhost:24380/TrolleyDetail/GetTrolleyDetails',
+          method: 'GET',
+          data: {
+            Id: UserID,
+          },
+          success: function (res) {
+            console.log(res.data)
+            that.setData({
+              goodList: res.data,
+              // hasList:true,length
+            })
+          }
+
+        })
       }
-  })
+    })
 
   },
-  
 
   //删除购物车单个缓存
   shanchu: function(e) {

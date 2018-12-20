@@ -10,6 +10,14 @@
   height: 250rpx;
   margin: 0 auto;
 }
+
+.container {
+	height: 100%;
+}
+scroll-view {
+	height: 100%;
+}
+
 .nickname{
   margin-bottom: 10rpx;
   text-align: center;

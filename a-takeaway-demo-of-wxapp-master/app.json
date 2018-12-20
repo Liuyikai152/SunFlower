@@ -1,7 +1,6 @@
 {
   "pages": [
-    
-    
+
     "page/index/index",
     "page/shoppingcar/index",
     "page/fooddetail/fooddetail",
@@ -17,7 +16,6 @@
     "page/mine/details/details",
    "page/index/search/search",
     "page/foods/foods",
-
     "dutu/dutu"
     
   ],

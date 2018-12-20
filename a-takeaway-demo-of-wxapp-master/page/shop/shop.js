@@ -1,6 +1,5 @@
+var app=new getApp();
 var util = require('../../utils/util.js');
-
-
 
 Page({
 
@@ -64,7 +63,7 @@ Page({
     ],
 
   },
-//添加购物车方法
+//添加收藏方法
   AddShous: function (event) {
     var id = event.currentTarget.id;
 
@@ -299,12 +298,13 @@ Page({
                 })
               }
               else{
-             wx.showToast({
-               title: '您以添加到购物车,请查看购物车',
-             })
-              }
-              }
-            })
+           
+                wx.showToast({
+                  title: '您以添加到购物车,请查看购物车',
+                })
+                  }
+                  }
+                })
 
 
           
