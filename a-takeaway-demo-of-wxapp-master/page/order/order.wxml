@@ -1,5 +1,5 @@
 
-<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
+<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" >
 	
   <block wx:for="{{res_data}}" wx:key="id" >
   

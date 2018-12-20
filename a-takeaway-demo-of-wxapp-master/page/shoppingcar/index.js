@@ -284,7 +284,10 @@ Page({
    */
   checkboxChange: function(e) {
     var checkboxItems = this.data.goodList;
+    console.log(checkboxItems);
     var values = e.detail.value;
+    console.log(values);
+    
     for (var i = 0; i < checkboxItems.length; ++i) {
       checkboxItems[i].checked = false;
       for (var j = 0; j < values.length; ++j) {
