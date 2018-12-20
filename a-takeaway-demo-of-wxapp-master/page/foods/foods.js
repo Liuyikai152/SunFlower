@@ -19,12 +19,12 @@ Page({
     var delivery_loction = event.detail.value.delivery_loction;
     var delivery_Title = event.detail.value.delivery_Title;
     var delivery_phone = event.detail.value.delivery_phone;
-      var Createtime = event.detail.value.Createtime;
-      var Endtime = event.detail.value.Endtime;
-      var delivery_StoreType = event.detail.value.delivery_StoreType == false ? "个体" : "连锁";
+    var Createtime = event.detail.value.Createtime;
+    var Endtime = event.detail.value.Endtime;
+    var delivery_StoreType = event.detail.value.delivery_StoreType == false ? "个体" : "连锁";
     var atue=5;
     var state=9;
-      console.log(delivery_StoreType);
+      
   
     //申请店铺
     wx.request({
