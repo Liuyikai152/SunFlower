@@ -44,19 +44,13 @@ Page({
        method:"post",
        success:function(res)
        {
-         
-         if(res.data>0){
-         wx.showToast({
-           title: '支付成功',
-         })   
-         }
-         else{
-           wx.showToast({
-             title: '网络不佳,请重新支付',
-           })  
-         }
+            wx.showToast({
+              title: '支付成功',
+            })   
+             
        }
      })
+     
   }
 })
 

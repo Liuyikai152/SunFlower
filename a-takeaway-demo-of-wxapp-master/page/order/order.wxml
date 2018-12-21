@@ -15,7 +15,7 @@
 
 					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">￥{{item.Money}}</view>
   </navigator> 
-          <button class='right' bindtap='UptState' id="{{item.OrderNumber}}">
+          <button class='right' >
           {{item.OrderState==11?"待支付":"已支付"}}
           </button>
 

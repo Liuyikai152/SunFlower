@@ -30,7 +30,8 @@ page {
 }
 .header .name {
 	padding-top: 20rpx;
-	font-size: 36rpx;
+	font-size: 40rpx;
+
 	line-height: 60rpx;
 }
 .header .welcome {
@@ -83,11 +84,13 @@ page {
 	background: #fff;
 }
 .classify-container .classify .name {
-	display: inline-block;
-	font-size: 30rpx;
+	/* display: inline-block; */
+	font-size: 36rpx;
 	color: #646464;
-	line-height: 1.2;
-	text-align: left;
+  width: 60px;
+  
+	/* line-height: 1.2;
+	text-align: left; */
 	pointer-events: none;
 }
 
