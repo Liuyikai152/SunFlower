@@ -26,6 +26,13 @@
   margin-right: -1rpx;
   margin-top: -100rpx;
 }
+.right{
+ float: right;
+  width: 150rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  margin-bottom: 100rpx;
+}
 .header .logo {
 	float: left;
 	width: 160rpx;

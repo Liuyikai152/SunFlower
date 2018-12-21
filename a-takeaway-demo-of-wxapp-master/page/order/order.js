@@ -3,7 +3,7 @@ var app = getApp();
 
 Page({
   onLoad: function (options) {   
-   
+  
   },
 
   onShow:function()
@@ -13,7 +13,7 @@ Page({
       url: 'http://localhost:24380/Order/GetOrders',
       method: 'GET',
       success: function (res) {
-console.log(res.data)
+
         that.setData({
           res_data: res.data,
         })
@@ -21,7 +21,7 @@ console.log(res.data)
     })
 
   },
-  //删除购物车单个缓存
+  //删除订单单个缓存
   shanchu: function (e) {
 
     var id = e.currentTarget.dataset.aid
@@ -32,7 +32,31 @@ console.log(res.data)
 
       }
     })
-   
+   this.onShow();
+  },
+
+  UptState:function(e)
+  {    
+     var orderNumber=e.currentTarget.id;
+
+     wx.request({
+       url: 'http://localhost:24380/Order/UpdateOrders?orderNumber=' + orderNumber +"&&orderState=10",
+       method:"post",
+       success:function(res)
+       {
+         
+         if(res.data>0){
+         wx.showToast({
+           title: '支付成功',
+         })   
+         }
+         else{
+           wx.showToast({
+             title: '网络不佳,请重新支付',
+           })  
+         }
+       }
+     })
   }
 })
 

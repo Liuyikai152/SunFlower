@@ -1,18 +1,31 @@
+// page/UserOrder/UserOrder.js
 
-var app = getApp();
+var app = getApp()
+
 
 Page({
 
-  onLoad: function (options) {
-   
+  data: {
+    indicatorDots: true,  //是否显示面板指示点
+    autoplay: true,      //是否自动切换
+    interval: 3000,       //自动切换时间间隔
+    duration: 1000,       //滑动动画时长
+    inputShowed: false,
+    inputVal: "",
+    currentCity: "",
   },
-  onShow:function(){
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     var that = this;
+    var orderid = options.id;
+    console.log(orderid);
     wx.request({
-      url: 'http://localhost:24380/Collect/GetCollects',
+      url: 'http://localhost:24380/Order/GetOrder?id=' + orderid,
       method: 'GET',
       success: function (res) {
-
+        console.log(res.data)
         that.setData({
           res_data: res.data
         })
@@ -20,22 +33,7 @@ Page({
     })
   },
 
-  //删除购物车单个缓存
-  shanchu: function (e) {
 
-    var id = e.currentTarget.dataset.aid
-    wx.request({
-      url: 'http://localhost:24380/Collect/DeleteCollect?id=' + id,
-      method: 'GET',
-      success: function (res) {
-        wx.showToast({
-          title: '取消收藏成功!',
-        })
-      }
-    })
-  
-    this.onShow();
-  },
 
 
   onScroll: function (e) {
@@ -59,5 +57,6 @@ Page({
     });
   },
 
- 
+
+
 })

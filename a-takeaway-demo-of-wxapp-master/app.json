@@ -9,6 +9,7 @@
     "page/mine/mine",
     "page/user/user",
     "page/UserOrder/UserOrder",
+    "page/orderdetails/orderdetails",
     "page/edit_addr/edit_addr",
     "page/mine/comment/comment",
     "page/mine/collect/collect",
@@ -17,6 +18,7 @@
    "page/index/search/search",
     "page/foods/foods",
     "dutu/dutu"
+    
     
   ],
 
