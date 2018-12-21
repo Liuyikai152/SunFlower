@@ -14,16 +14,16 @@
 
 <scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
   <block wx:for="{{sx}}" wx:key="item.ID" >
-  
+    <navigator url="/page/shop/shop?id={{item.ID}}" >
       <view  wx:for-item="classify" wx:key="id" id="{{classify.id}}" >
 				<view class="goods"  wx:for-item="id" wx:key="*this">
         	<image  class="pic" src="{{item.StoreImg}}"></image>
 					<view  class="StoreName">{{item.StoreName}}</view>
 					<view   name="delivery_Sale" value="{{delivery_Sale}}" class="sold">{{item.Content}}</view>
-
 					<view name="delivery_FoodSprice" value="{{delivery_FoodSprice}}" class="price">{{item.CommentTime}}</view> 
 				</view>
 			</view>
+    </navigator>
   </block>
 </scroll-view>
 
