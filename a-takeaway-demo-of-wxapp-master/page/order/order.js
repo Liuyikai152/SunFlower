@@ -3,6 +3,12 @@ var app = getApp();
 
 Page({
   onLoad: function (options) {   
+
+
+  },
+
+  onShow:function()
+  {
     var that = this;
     wx.request({
       url: 'http://localhost:24380/Order/GetOrders',
@@ -14,12 +20,6 @@ Page({
         })
       }
     })
-
-  },
-
-  onShow:function()
-  {
-  
   },
   //删除订单单个缓存
   shanchu: function (e) {
@@ -32,7 +32,7 @@ Page({
 
       }
     })
-   this.onLoad();
+   this.onShow();
   },
 
   UptState:function(e)
@@ -51,7 +51,7 @@ Page({
        }
      })
 
-    this.onLoad();
+    this.onShow();
   }
 })
 

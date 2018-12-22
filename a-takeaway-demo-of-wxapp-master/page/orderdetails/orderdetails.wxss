@@ -29,9 +29,10 @@ scroll-view {
 }
 
 .Marker{
- float: right;
-	height: 220rpx;
-  margin-right: 20rpx;
+ float: left;
+	height: 200rpx;
+  margin-left: 30rpx;
+  margin-top: 50rpx;
 }
 
 .section {

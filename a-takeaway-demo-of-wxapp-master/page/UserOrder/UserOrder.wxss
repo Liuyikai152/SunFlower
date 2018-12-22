@@ -8,7 +8,11 @@ page {
 
 height: 170px;
 }
-
+.Marker{
+  float: left;
+  height: 180rpx;
+  margin-top:20px; 
+}
 .container {
 	height: 100%;
 }

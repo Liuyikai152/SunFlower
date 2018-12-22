@@ -186,7 +186,7 @@ Page({
 
         })
 
-   this.onLoad();
+   this.onShow();
       
   },
 
