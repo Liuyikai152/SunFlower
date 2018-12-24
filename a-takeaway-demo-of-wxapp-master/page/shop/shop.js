@@ -46,7 +46,7 @@ Page({
 
   data: {
 
-    collect1: "已收藏",
+    collect1: "收藏",
 
   },
 
