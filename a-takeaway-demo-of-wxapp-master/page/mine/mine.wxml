@@ -14,9 +14,9 @@
 		 <open-data type="userAvatarUrl" class="avatar"></open-data>
 		<view class="nickname">{{userInfo.nickName}}</view>
 	</view>
-	<view class="section">
+	<!-- <view class="section">
   <view class="line judgement" bindtap='details'>个人信息</view>
-	</view>
+	</view> -->
 	<view class="section">
 		<view class="line judgement" bindtap='evaluate'>我的评价</view>
 	</view>

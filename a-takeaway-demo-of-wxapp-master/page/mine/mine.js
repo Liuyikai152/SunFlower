@@ -34,12 +34,12 @@ store:function(){
 
   },
 
-  details: function () {
-    wx.navigateTo({
-      url: '/page/mine/details/details',
-    })
+  // details: function () {
+  //   wx.navigateTo({
+  //     url: '/page/mine/details/details',
+  //   })
 
-  },
+  // },
 
 edit_addr: function () {
     wx.navigateTo({

@@ -84,7 +84,7 @@ Page({
 
 
   },
-  
+   //订单
   order: function() {
   
       //查询用户信息
