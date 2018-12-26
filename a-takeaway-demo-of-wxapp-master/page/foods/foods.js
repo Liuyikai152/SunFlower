@@ -4,16 +4,7 @@ var server = require('../../utils/data');
 var util = require('../../utils/util.js'); 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
- 
-
-    handleSubmit: function (event) {
- 
+  handleSubmit: function (event) {
     var delivery_Number = event.detail.value.delivery_Number;
     var delivery_Name = event.detail.value.delivery_Name;
     var delivery_loction = event.detail.value.delivery_loction;
@@ -24,8 +15,6 @@ Page({
     var delivery_StoreType = event.detail.value.delivery_StoreType == false ? "个体" : "连锁";
     var atue=5;
     var state=9;
-      
-  
     //申请店铺
     wx.request({
       url: 'http://localhost:24380/Store/AddStore',
@@ -44,13 +33,29 @@ Page({
 
       },
       success: function () {
+      },
+     })
+
+    wx.request({
+      url: 'http://localhost:24380/ApprovalProcess/AddApprovalProcess',
+      method: 'POST',
+      data: {
+        Name:delivery_Name,
+        IsAllowModity: 1,
+        IsAllowVersion: 1,
+        Creator:"康杨杨",
+       
+      },
+      success: function () {
         wx.showToast({
           title: '保存成功!'
         })
       },
-     })
+    })
   },
 
+
+  
   /**
    * 生命周期函数--监听页面加载
    */
