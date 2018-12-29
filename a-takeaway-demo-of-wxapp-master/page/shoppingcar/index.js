@@ -16,6 +16,7 @@ Page({
     'totalCount': 0,
     'totalPrice': 0
   },
+  
   onLoad: function() {
   
 
